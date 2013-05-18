@@ -1,0 +1,11 @@
+{% if clinicList %}
+<ul>
+	{% for clinic in clinicList %}
+	<!--<li><a href="/ipts/{{ clinic.id }}/">{{ clinic.cname }}</a></li>-->
+	<li><a href="{% url 'ipts:detail' clinic.id %}">{{ clinic.cname }}</a></li>
+	{% endfor %}
+</ul>
+
+{% else %}
+	<p>No polls are available.</p>
+{% endif %}

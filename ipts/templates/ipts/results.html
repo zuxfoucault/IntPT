@@ -1,0 +1,20 @@
+{% if clinicList %}
+	{% for clinicL in clinicList %}
+		{% if clinicL.id != clinic.id %}
+		<ul>
+			<li><a href="{% url 'ipts:detail' clinicL.id %}">{{ clinicL.cname }}</a></li>
+		</ul>
+		{% endif %}
+
+		{% if clinicL.id = clinic.id %}
+		<h1>{{ clinic.cname }}</h1>
+
+			<ul>
+			{% for choice in clinic.choice_set.all %}
+				<li>{{ choice.choice_text }} -- {{ choice.chosen }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% endfor %}
+	<a href="{% url 'ipts:resultsAll' %}">Show All Result.</a>
+{% endif %}
